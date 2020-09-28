@@ -31,11 +31,6 @@ function main() {
     messages = messages.concat(newMessages);
     latestMessage = 'latest=' + res.messages[res.messages.length - 1].ts;
   } while (res.has_more);
-
-  SpreadsheetApp
-    .getActiveSheet()
-    .getRange('A2:G' + (messages.length + 1))
-    .setValues(messages);
 }
 
 function fetchSlackChannelMessages(url) {
