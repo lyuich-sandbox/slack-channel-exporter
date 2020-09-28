@@ -5,6 +5,7 @@ const CHANNEL = PropertiesService.getScriptProperties().getProperty('CHANNEL')
 const getChannelsMessages = () => {
   const history = getConversationsHistory()
 
+  // Call conversations.replies for each parent messages which has thread_ts
   const replies = history.messages
     .filter(msg => {
       return !(msg.thread_ts == null)
@@ -12,7 +13,7 @@ const getChannelsMessages = () => {
     // NOTE: V8 runtime is needed to use flatMap()
     .flatMap(msg => {
       return getConversationsReplies(msg.thread_ts).messages.filter(msg => {
-        // Remove parent messages to avoid duplication
+        // Remove parent messages from replies to avoid duplication
         return !(msg.ts === msg.thread_ts)
       })
     })
@@ -24,7 +25,7 @@ const getChannelsMessages = () => {
   })
 }
 
-// Slack Conversations API
+// Conversations API
 
 const getConversationsHistory = () => {
   const endpoint = 'conversations.history'
