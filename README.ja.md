@@ -62,10 +62,15 @@ https://app.slack.com/client/${TEAM_ID}/${CHANNEL_ID}
 
 - スプレッドシートを開く https://docs.google.com/spreadsheets/d/1wU9oej5iQqNpF729qR_nHSdU8d1GIRL568DKeEZkAAc/edit?usp=sharing
 - ファイル > コピーを作成
+- (任意) 必要であれば スプレッドシートの共有設定を変更する
 
 ### 4. スクリプトのプロパティに環境変数を設定する
 
 - ツール > スクリプトエディタ ( Google Apps Script エディタが開く) 
+- 下図のメッセージが表示された場合は "Enable" を選択し V8 Runtime を有効にする
+
+![Enable V8 Runtime](docs/images/enable_v8_runtime.png)
+
 - ファイル > プロジェクトのプロパティ
 - スクリプトのプロパティ > 行を追加
   - TOKEN: Slack API トークン (1-5 で取得したもの)
@@ -75,17 +80,6 @@ https://app.slack.com/client/${TEAM_ID}/${CHANNEL_ID}
 ![Set Environment Variables](docs/images/set_environment_variables.png)
 
 ### 5. スクリプトを実行する
-
-- (任意) もし必要であれば スクリプトを修正し 取得するチャンネル履歴の件数制限を更新する (デフォルトは 1000件に設定)
-
-```diff
-  const baseParameters = [
-    'token=' + TOKEN,
-    'channel=' + CHANNEL,
--    'count=1000',
-+    'count=2000',
-  ];
-```
 
 - 関数を選択
   - main 関数を選択
