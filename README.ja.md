@@ -62,6 +62,7 @@ https://app.slack.com/client/${TEAM_ID}/${CHANNEL_ID}
 
 - スプレッドシートを開く https://docs.google.com/spreadsheets/d/1wU9oej5iQqNpF729qR_nHSdU8d1GIRL568DKeEZkAAc/edit?usp=sharing
 - ファイル > コピーを作成
+- (任意) 必要であれば スプレッドシートの共有設定を変更する
 
 ### 4. スクリプトのプロパティに環境変数を設定する
 
