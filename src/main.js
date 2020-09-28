@@ -1,8 +1,8 @@
-var TOKEN   = PropertiesService.getScriptProperties().getProperty("TOKEN");
+var TOKEN = PropertiesService.getScriptProperties().getProperty("TOKEN");
 var CHANNEL = PropertiesService.getScriptProperties().getProperty("CHANNEL");
 
 function main() {
-  const baseUrl = 'https://slack.com/api/channels.history';
+  const baseUrl = 'https://slack.com/api/conversations.history';
   const baseParameters = [
     'token=' + TOKEN,
     'channel=' + CHANNEL,
@@ -29,19 +29,19 @@ function main() {
         ];
       });
     messages = messages.concat(newMessages);
-    latestMessage = 'latest=' + res.messages[res.messages.length-1].ts;
+    latestMessage = 'latest=' + res.messages[res.messages.length - 1].ts;
   } while (res.has_more);
 
   SpreadsheetApp
     .getActiveSheet()
-    .getRange('A2:G' + (messages.length+1))
+    .getRange('A2:G' + (messages.length + 1))
     .setValues(messages);
 }
 
 function fetchSlackChannelMessages(url) {
-	const res = UrlFetchApp.fetch(url, {
-		method: 'GET',
-		headers: { "Content-Type": 'application/json' }
-	});
+  const res = UrlFetchApp.fetch(url, {
+    method: 'GET',
+    headers: { "Content-Type": 'application/json' }
+  });
   return JSON.parse(res);
 }

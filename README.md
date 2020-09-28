@@ -1,3 +1,5 @@
+For the latest information, please refer to the [Japanese version](README.ja.md)
+
 ## About
 
 This script exports threads for a specific channel in Slack to the Google SpreadSheet.
