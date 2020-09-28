@@ -7,6 +7,13 @@ const getConversationsHistory = () => {
   return slackApi(endpoint, method)
 }
 
+const getConversationsReplies = ts => {
+  const endpoint = 'conversations.replies'
+  const method = 'GET'
+  const params = { ts: ts }
+  return slackApi(endpoint, method, params)
+}
+
 const slackApi = (endpoint, method, params) => {
   const baseUrl = 'https://slack.com/api'
   const baseParams = {
