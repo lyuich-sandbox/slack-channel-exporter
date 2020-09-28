@@ -24,7 +24,7 @@ const getChannelsMessages = () => {
   })
 }
 
-// Slack API
+// Slack Conversations API
 
 const getConversationsHistory = () => {
   const endpoint = 'conversations.history'
@@ -38,6 +38,8 @@ const getConversationsReplies = ts => {
   const params = { ts: ts }
   return fetchSlackApi(endpoint, method, params)
 }
+
+// Slack API Base
 
 const fetchSlackApi = (endpoint, method, params) => {
   const baseUrl = 'https://slack.com/api'
