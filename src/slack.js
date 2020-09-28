@@ -1,6 +1,31 @@
 const TOKEN = PropertiesService.getScriptProperties().getProperty('TOKEN')
 const CHANNEL = PropertiesService.getScriptProperties().getProperty('CHANNEL')
 
+// Merge messages in conversations.history and conversations.replies
+const getChannelsMessages = () => {
+  const history = getConversationsHistory()
+
+  const replies = history.messages
+    .filter(msg => {
+      return !(msg.thread_ts == null)
+    })
+    // NOTE: V8 runtime is needed to use flatMap()
+    .flatMap(msg => {
+      return getConversationsReplies(msg.thread_ts).messages.filter(msg => {
+        // Remove parent messages to avoid duplication
+        return !(msg.ts === msg.thread_ts)
+      })
+    })
+
+  const messages = history.messages.concat(replies)
+
+  return messages.sort((a, b) => {
+    return b.ts - a.ts
+  })
+}
+
+// Slack API
+
 const getConversationsHistory = () => {
   const endpoint = 'conversations.history'
   const method = 'GET'
