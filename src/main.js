@@ -2,7 +2,7 @@ var TOKEN   = PropertiesService.getScriptProperties().getProperty("TOKEN");
 var CHANNEL = PropertiesService.getScriptProperties().getProperty("CHANNEL");
 
 function main() {
-  const baseUrl = 'https://slack.com/api/channels.history';
+  const baseUrl = 'https://slack.com/api/conversations.history';
   const baseParameters = [
     'token=' + TOKEN,
     'channel=' + CHANNEL,
