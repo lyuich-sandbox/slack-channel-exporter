@@ -76,17 +76,6 @@ https://app.slack.com/client/${TEAM_ID}/${CHANNEL_ID}
 
 ### 5. スクリプトを実行する
 
-- (任意) もし必要であれば スクリプトを修正し 取得するチャンネル履歴の件数制限を更新する (デフォルトは 1000件に設定)
-
-```diff
-  const baseParameters = [
-    'token=' + TOKEN,
-    'channel=' + CHANNEL,
--    'count=1000',
-+    'count=2000',
-  ];
-```
-
 - 関数を選択
   - main 関数を選択
 - 実行ボタン ▶ を選択
