@@ -66,6 +66,10 @@ https://app.slack.com/client/${TEAM_ID}/${CHANNEL_ID}
 ### 4. スクリプトのプロパティに環境変数を設定する
 
 - ツール > スクリプトエディタ ( Google Apps Script エディタが開く) 
+- 下図のメッセージが表示された場合は "Enable" を選択し V8 Runtime を有効にする
+
+![Enable V8 Runtime](docs/images/enable_v8_runtime.png)
+
 - ファイル > プロジェクトのプロパティ
 - スクリプトのプロパティ > 行を追加
   - TOKEN: Slack API トークン (1-5 で取得したもの)
