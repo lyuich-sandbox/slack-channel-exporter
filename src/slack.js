@@ -1,6 +1,12 @@
 const TOKEN = PropertiesService.getScriptProperties().getProperty('TOKEN')
 const CHANNEL = PropertiesService.getScriptProperties().getProperty('CHANNEL')
 
+const getConversationsHistory = () => {
+  const endpoint = 'conversations.history'
+  const method = 'GET'
+  return slackApi(endpoint, method)
+}
+
 const slackApi = (endpoint, method, params) => {
   const baseUrl = 'https://slack.com/api'
   const baseParams = {
